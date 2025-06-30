@@ -182,7 +182,6 @@ export default function CreateDonation({ onBack }) {
                   className={styles.input}
                   value={formData.expiry_date}
                   onChange={handleInputChange}
-                  required
                 />
               </div>
             </div>
