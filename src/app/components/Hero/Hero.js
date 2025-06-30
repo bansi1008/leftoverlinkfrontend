@@ -1,11 +1,17 @@
 "use client";
+import { useState } from "react";
 import Image from "next/image";
-import Link from "next/link";
 import { motion } from "framer-motion";
 import { FaHeart, FaHandsHelping, FaArrowRight, FaPlay } from "react-icons/fa";
+import LoginModal from "../LoginModal/LoginModal";
+import SignUpModal from "../SignUpModal/SignUpModal";
 import styles from "./Hero.module.css";
 
 const Hero = () => {
+  const [isLoginModalOpen, setIsLoginModalOpen] = useState(false);
+  const [isSignUpModalOpen, setIsSignUpModalOpen] = useState(false);
+  const [userIntention, setUserIntention] = useState(null);
+
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -62,6 +68,57 @@ const Hero = () => {
     },
   };
 
+  const handleDonateClick = () => {
+    setUserIntention("donate");
+    setIsLoginModalOpen(true);
+  };
+
+  const handleRequestClick = () => {
+    setUserIntention("request");
+    setIsLoginModalOpen(true);
+  };
+
+  const handleLoginSuccess = (user) => {
+    setIsLoginModalOpen(false);
+
+    // Redirect based on user intention and role
+    if (userIntention === "donate" && user.role === "donor") {
+      // Redirect to donor dashboard
+      window.location.href = "/dashboard/donor";
+    } else if (userIntention === "request" && user.role === "ngo") {
+      // Redirect to NGO dashboard
+      window.location.href = "/dashboard/ngo";
+    } else {
+      // If user role doesn't match intention, show appropriate message
+      if (userIntention === "donate" && user.role === "ngo") {
+        alert(
+          "NGOs cannot donate. Please login with a donor account or sign up as a donor."
+        );
+      } else if (userIntention === "request" && user.role === "donor") {
+        alert(
+          "Donors cannot request food. Please login with an NGO account or sign up as an NGO."
+        );
+      }
+    }
+
+    setUserIntention(null);
+  };
+
+  const handleLoginModalClose = () => {
+    setIsLoginModalOpen(false);
+    setUserIntention(null);
+  };
+
+  const handleSignUpModalClose = () => {
+    setIsSignUpModalOpen(false);
+    setUserIntention(null);
+  };
+
+  const handleNeedAccount = () => {
+    setIsLoginModalOpen(false);
+    setIsSignUpModalOpen(true);
+  };
+
   return (
     <section className={styles.hero}>
       <div className={styles.container}>
@@ -104,28 +161,28 @@ const Hero = () => {
             </motion.div>
 
             <motion.div className={styles.ctaButtons} variants={itemVariants}>
-              <motion.div
+              <motion.button
+                className={styles.primaryBtn}
                 variants={buttonVariants}
                 whileHover="hover"
                 whileTap="tap"
+                onClick={handleDonateClick}
               >
-                <Link href="/donate" className={styles.primaryBtn}>
-                  <FaHeart className={styles.btnIcon} />
-                  Donate Now
-                  <FaArrowRight className={styles.btnArrow} />
-                </Link>
-              </motion.div>
+                <FaHeart className={styles.btnIcon} />
+                Donate Now
+                <FaArrowRight className={styles.btnArrow} />
+              </motion.button>
 
-              <motion.div
+              <motion.button
+                className={styles.secondaryBtn}
                 variants={buttonVariants}
                 whileHover="hover"
                 whileTap="tap"
+                onClick={handleRequestClick}
               >
-                <Link href="/request" className={styles.secondaryBtn}>
-                  <FaHandsHelping className={styles.btnIcon} />
-                  Request Help
-                </Link>
-              </motion.div>
+                <FaHandsHelping className={styles.btnIcon} />
+                Request Help
+              </motion.button>
 
               <motion.button
                 className={styles.videoBtn}
@@ -197,6 +254,19 @@ const Hero = () => {
           <span>Scroll to explore</span>
         </motion.div>
       </div>
+
+      {/* Login Modal */}
+      <LoginModal
+        isOpen={isLoginModalOpen}
+        onClose={handleLoginModalClose}
+        onLoginSuccess={handleLoginSuccess}
+      />
+
+      {/* Sign Up Modal */}
+      <SignUpModal
+        isOpen={isSignUpModalOpen}
+        onClose={handleSignUpModalClose}
+      />
     </section>
   );
 };

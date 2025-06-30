@@ -1,0 +1,641 @@
+/* Main Layout */
+.mainLayout {
+  min-height: 100vh;
+  background: #f8fafc;
+}
+
+/* Hero Banner */
+.heroBanner {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  padding: 4rem 0;
+  position: relative;
+  overflow: hidden;
+}
+
+.heroBanner::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: url("/img_1_leftoverlink.jpg") center/cover;
+  opacity: 0.1;
+  z-index: 1;
+}
+
+.heroContent {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: center;
+  position: relative;
+  z-index: 2;
+}
+
+.heroText {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.heroTitle {
+  font-size: 3.5rem;
+  font-weight: 700;
+  line-height: 1.1;
+  margin: 0;
+  background: linear-gradient(135deg, #ffffff, #f59e0b);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.heroSubtitle {
+  font-size: 1.25rem;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.9);
+  margin: 0;
+}
+
+.heroStats {
+  display: flex;
+  gap: 2rem;
+  margin-top: 1rem;
+}
+
+.heroStat {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 1.5rem;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 16px;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  flex: 1;
+}
+
+.statValue {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #f59e0b;
+  margin-bottom: 0.5rem;
+}
+
+.statLabel {
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.8);
+  font-weight: 500;
+}
+
+/* Hero Image */
+.heroImage {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.heroImg {
+  width: 100%;
+  max-width: 500px;
+  height: 400px;
+  object-fit: cover;
+  border-radius: 24px;
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.3);
+  border: 4px solid rgba(255, 255, 255, 0.2);
+}
+
+.floatingCard {
+  position: absolute;
+  bottom: -20px;
+  right: -20px;
+  background: white;
+  padding: 1.5rem;
+  border-radius: 20px;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+.cardIcon {
+  font-size: 2rem;
+}
+
+.cardContent {
+  display: flex;
+  flex-direction: column;
+}
+
+.cardTitle {
+  font-size: 0.8rem;
+  color: #6b7280;
+  font-weight: 500;
+}
+
+.cardValue {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #1f2937;
+}
+
+/* Impact Section */
+.impactSection {
+  padding: 6rem 0;
+  background: white;
+}
+
+.impactContainer {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+.impactTitle {
+  text-align: center;
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #1f2937;
+  margin-bottom: 3rem;
+  position: relative;
+}
+
+.impactTitle::after {
+  content: "";
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 4px;
+  background: linear-gradient(135deg, #667eea, #f59e0b);
+  border-radius: 2px;
+}
+
+.impactCards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 2rem;
+}
+
+.impactCard {
+  background: white;
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  transition: all 0.3s ease;
+  border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.impactCard:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+}
+
+.impactImage {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+.impactInfo {
+  padding: 2rem;
+}
+
+.impactInfo h3 {
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: #1f2937;
+  margin: 0 0 1rem 0;
+}
+
+.impactNumber {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #f59e0b;
+  margin: 0 0 0.5rem 0;
+}
+
+.impactDescription {
+  color: #6b7280;
+  margin: 0;
+  line-height: 1.5;
+}
+
+/* Quick Actions */
+.quickActions {
+  padding: 6rem 0;
+  background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+}
+
+.actionsContainer {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+.actionsTitle {
+  text-align: center;
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #1f2937;
+  margin-bottom: 3rem;
+  position: relative;
+}
+
+.actionsTitle::after {
+  content: "";
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 4px;
+  background: linear-gradient(135deg, #667eea, #f59e0b);
+  border-radius: 2px;
+}
+
+.actionCards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+}
+
+.actionCard {
+  background: white;
+  padding: 2.5rem;
+  border-radius: 20px;
+  text-align: center;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+  transition: all 0.3s ease;
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  cursor: pointer;
+}
+
+.actionCard:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12);
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  color: white;
+}
+
+.actionIcon {
+  font-size: 3rem;
+  margin-bottom: 1.5rem;
+  display: block;
+}
+
+.actionCard h3 {
+  font-size: 1.3rem;
+  font-weight: 600;
+  margin: 0 0 1rem 0;
+  color: #1f2937;
+  transition: color 0.3s ease;
+}
+
+.actionCard:hover h3 {
+  color: white;
+}
+
+.actionCard p {
+  color: #6b7280;
+  margin: 0;
+  line-height: 1.5;
+  transition: color 0.3s ease;
+}
+
+.actionCard:hover p {
+  color: rgba(255, 255, 255, 0.9);
+}
+
+/* Dashboard Section */
+.dashboardSection {
+  padding: 4rem 0;
+  background: white;
+}
+
+.dashboardContainer {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+/* Coming Soon Section */
+.comingSoon {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 60vh;
+  text-align: center;
+  padding: 4rem 2rem;
+  background: #f8fafc;
+}
+
+.comingSoon h2 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #1f2937;
+  margin: 0 0 1rem 0;
+}
+
+.comingSoon p {
+  font-size: 1.2rem;
+  color: #6b7280;
+  margin: 0;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .heroContent {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+    text-align: center;
+    padding: 0 1rem;
+  }
+
+  .heroTitle {
+    font-size: 2.8rem;
+  }
+
+  .heroStats {
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .heroStat {
+    min-width: 180px;
+  }
+
+  .impactCards {
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+  }
+
+  .actionCards {
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+  }
+
+  .heroBanner {
+    padding: 3rem 0;
+  }
+
+  .impactSection,
+  .quickActions {
+    padding: 4rem 0;
+  }
+
+  .impactContainer,
+  .actionsContainer {
+    padding: 0 1rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .heroBanner {
+    padding: 2rem 0;
+  }
+
+  .heroContent {
+    gap: 2rem;
+    padding: 0 1rem;
+  }
+
+  .heroTitle {
+    font-size: 2rem;
+    line-height: 1.2;
+  }
+
+  .heroSubtitle {
+    font-size: 1rem;
+    line-height: 1.5;
+  }
+
+  .heroStats {
+    flex-direction: column;
+    gap: 1rem;
+    align-items: center;
+  }
+
+  .heroStat {
+    padding: 1rem;
+    width: 100%;
+    max-width: 280px;
+  }
+
+  .statValue {
+    font-size: 1.5rem;
+  }
+
+  .heroImg {
+    height: 250px;
+    border-radius: 16px;
+  }
+
+  .impactSection,
+  .quickActions {
+    padding: 3rem 0;
+  }
+
+  .impactTitle,
+  .actionsTitle {
+    font-size: 1.8rem;
+    margin-bottom: 2rem;
+  }
+
+  .impactCards {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .impactCard {
+    border-radius: 16px;
+  }
+
+  .impactImage {
+    height: 180px;
+  }
+
+  .actionCards {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .actionCard {
+    padding: 1.5rem;
+    border-radius: 16px;
+  }
+
+  .actionIcon {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+  }
+
+  .floatingCard {
+    position: static;
+    margin-top: 2rem;
+    padding: 1rem;
+    border-radius: 12px;
+  }
+
+  .dashboardSection {
+    padding: 2rem 0;
+  }
+
+  .comingSoon {
+    padding: 3rem 1rem;
+    min-height: 50vh;
+  }
+
+  .comingSoon h2 {
+    font-size: 2rem;
+  }
+
+  .comingSoon p {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .heroContent {
+    padding: 0 0.75rem;
+    gap: 1.5rem;
+  }
+
+  .heroTitle {
+    font-size: 1.6rem;
+    line-height: 1.1;
+  }
+
+  .heroSubtitle {
+    font-size: 0.9rem;
+  }
+
+  .heroStats {
+    gap: 0.75rem;
+  }
+
+  .heroStat {
+    padding: 0.75rem;
+    border-radius: 12px;
+  }
+
+  .statValue {
+    font-size: 1.2rem;
+  }
+
+  .statLabel {
+    font-size: 0.8rem;
+  }
+
+  .impactContainer,
+  .actionsContainer,
+  .dashboardContainer {
+    padding: 0 0.75rem;
+  }
+
+  .impactTitle,
+  .actionsTitle {
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .impactSection,
+  .quickActions {
+    padding: 2rem 0;
+  }
+
+  .impactImage {
+    height: 160px;
+  }
+
+  .impactInfo {
+    padding: 1.5rem;
+  }
+
+  .impactNumber {
+    font-size: 2rem;
+  }
+
+  .actionCards {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .actionCard {
+    padding: 1.25rem;
+    border-radius: 12px;
+  }
+
+  .actionIcon {
+    font-size: 2rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .actionCard h3 {
+    font-size: 1.1rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .actionCard p {
+    font-size: 0.85rem;
+    line-height: 1.4;
+  }
+
+  .heroImg {
+    height: 220px;
+    border-radius: 12px;
+  }
+
+  .floatingCard {
+    padding: 0.75rem;
+    border-radius: 8px;
+  }
+
+  .cardTitle {
+    font-size: 0.8rem;
+  }
+
+  .cardValue {
+    font-size: 1rem;
+  }
+
+  .heroBanner {
+    padding: 1.5rem 0;
+  }
+
+  .dashboardSection {
+    padding: 1.5rem 0;
+  }
+
+  .comingSoon {
+    padding: 2rem 0.75rem;
+    min-height: 40vh;
+  }
+
+  .comingSoon h2 {
+    font-size: 1.6rem;
+  }
+
+  .comingSoon p {
+    font-size: 0.9rem;
+  }
+}
